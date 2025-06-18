@@ -1,75 +1,78 @@
 
-# 📘 뉴스 큐레이션 서비스 (1인 백엔드 프로젝트)
+# 📰 NEWSHYPE: 실시간 뉴스 큐레이션 백엔드
 
-실시간 뉴스 데이터를 수집하여 인기 키워드 분석 및 사용자 맞춤형 뉴스를 제공하는 백엔드 중심의 개인 프로젝트입니다.  
-JWT 인증, Redis 캐시, WebSocket 실시간 통신 등 실무 기술을 반영하였습니다.
-
----
-
-## 🛠 개발 개요
-
-- **개발 기간**: 2025.06.18 ~ 2025.07.31
-- **개발 환경**: IntelliJ IDEA (Community Edition), Spring Boot, MySQL, Redis, EC2
-- **주요 기술**: Spring Boot, Spring Security, JPA, JWT, Redis, WebSocket, Swagger
+**"지금, 가장 핫한 키워드는?"**  
+실시간 뉴스 수집 → 키워드 분석 → 트렌디한 뉴스 피드 제공  
+Redis, WebSocket, JWT까지 완전한 실전 백엔드 스택으로 구현한 **1인 프로젝트**
 
 ---
 
-## 🧩 주요 기능 명세
+## 🔧 Stack
 
-| 기능 | 설명 | 엔드포인트 |
-|------|------|-------------|
-| 회원가입 | 이메일/비밀번호로 계정 생성 | `POST /api/signup` |
-| 로그인 | JWT 기반 인증 | `POST /api/login` |
-| 뉴스 수집 | 외부 API 연동 (스케줄링) | 내부 서비스 |
-| 뉴스 조회 | 최신/키워드 기반 뉴스 목록 | `GET /api/news` |
-| 키워드 분석 | 제목 기반 키워드 추출 및 집계 | 내부 서비스 |
-| 인기 키워드 조회 | Redis 캐시 기반 인기어 제공 | `GET /api/keywords/popular` |
-| 마이페이지 | 사용자별 뉴스 기록 조회 | `GET /api/user/mypage` |
-| 실시간 키워드 전송 | WebSocket으로 인기 키워드 전달 | `WebSocket /topic/keywords` |
-| API 문서화 | Swagger 연동 | `/swagger-ui/index.html` |
+`Spring Boot` `Spring Security` `JPA` `MySQL`  
+`Redis` `WebSocket (STOMP)` `JWT` `Swagger` `AWS EC2`
 
 ---
 
-## 🗃 ERD 기반 테이블 정의서 (MySQL)
+## ⚙️ What it does
 
-```sql
-CREATE TABLE users (
-    id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    email VARCHAR(255) NOT NULL UNIQUE,
-    password VARCHAR(255) NOT NULL,
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
-);
+| 기능 | 설명 |
+|------|------|
+| 🔐 회원가입 / 로그인 | JWT 인증 기반 사용자 인증 시스템 |
+| 📰 뉴스 수집 | 외부 API 연결 → 최신 뉴스 자동 수집 (스케줄링) |
+| 🔍 키워드 분석 | 제목 기반 키워드 추출 → Redis에 랭킹 저장 |
+| 🚀 실시간 전송 | 인기 키워드를 WebSocket으로 실시간 전송 |
+| 🧑‍💻 마이페이지 | 내가 본 뉴스, 좋아요, 관심 키워드 관리 |
+| 📄 Swagger | API 테스트 및 명세 자동 생성 |
 
-CREATE TABLE news (
-    id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    title VARCHAR(500) NOT NULL,
-    content TEXT,
-    url VARCHAR(1000),
-    published_at DATETIME
-);
+---
 
-CREATE TABLE keyword (
-    id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    word VARCHAR(100) NOT NULL UNIQUE,
-    count INT DEFAULT 0
-);
-...
+## 🧪 API 테스트
+
+- Swagger UI: [http://localhost:8080/swagger-ui/index.html](http://localhost:8080/swagger-ui/index.html)
+
+---
+
+## 🌍 배포
+
+- AWS EC2: Linux + Nginx + Spring Boot JAR 실행
+- 도메인 연결 + SSL (선택 적용 가능)
+
+---
+
+## 📁 Structure
+
+```
+├── src
+│   ├── controller
+│   ├── service
+│   ├── domain
+│   ├── repository
+│   └── config
+├── resources
+│   ├── application.yml
+│   └── templates
+├── docs
+│   ├── schema.sql
+│   └── erd.png
+└── README.md
 ```
 
-(※ 전체 테이블 정의는 `/docs/schema.sql` 또는 DB 툴 참고)
+---
+
+## 🧠 What I Learned
+
+- Redis를 통해 **트래픽 대응 & 캐시 구조** 경험
+- WebSocket 기반 **실시간 데이터 흐름** 이해
+- JWT + Security 필터 체인 설계 및 적용
+- API 명세 자동화 & GitHub 기반 협업 구조
 
 ---
 
-## 🌐 배포 환경
+## 💬 Contact
 
-- AWS EC2 + RDS
-- Spring Boot JAR 실행
-- Swagger 문서 자동 배포
+> 개발자 포트폴리오용 프로젝트입니다.  
+> 자세한 코드나 기획이 궁금하시다면 편하게 연락주세요!
 
----
-
-## ✨ 회고 & 성장 포인트
-
-- Redis 캐시 구조를 통한 **조회 성능 최적화**
-- WebSocket을 활용한 **실시간 알림 시스템 구축**
-- JWT 인증과 Spring Security 흐름의 깊은 이해
+📧 email: you@example.com  
+📌 GitHub: [github.com/your-id](https://github.com/your-id)
