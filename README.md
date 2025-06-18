@@ -1,5 +1,5 @@
 
-# 📰 NEWSHYPE: 실시간 뉴스 큐레이션 백엔드
+# 📰 실시간 뉴스 큐레이션
 
 **"지금, 가장 핫한 키워드는?"**  
 실시간 뉴스 수집 → 키워드 분석 → 트렌디한 뉴스 피드 제공  
@@ -29,7 +29,7 @@ Redis, WebSocket, JWT까지 완전한 실전 백엔드 스택으로 구현한 **
 
 ## 🧪 API 테스트
 
-- Swagger UI: [http://localhost:8080/swagger-ui/index.html](http://localhost:8080/swagger-ui/index.html)
+- Swagger UI: 
 
 ---
 
@@ -74,5 +74,5 @@ Redis, WebSocket, JWT까지 완전한 실전 백엔드 스택으로 구현한 **
 > 개발자 포트폴리오용 프로젝트입니다.  
 > 자세한 코드나 기획이 궁금하시다면 편하게 연락주세요!
 
-📧 email: you@example.com  
-📌 GitHub: [github.com/your-id](https://github.com/your-id)
+📧 email: 
+📌 GitHub: 
